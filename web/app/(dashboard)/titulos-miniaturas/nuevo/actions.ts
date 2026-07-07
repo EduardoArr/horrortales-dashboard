@@ -38,6 +38,7 @@ export interface CreateThumbnailIdeaInput {
   freeformIdea: string | null;
   requestedHostFeature: HostFeaturePreference;
   referenceOutlierIds: string[];
+  referenceViralThumbnailIds: string[];
 }
 
 export async function createThumbnailIdea(input: CreateThumbnailIdeaInput) {
@@ -51,7 +52,8 @@ export async function createThumbnailIdea(input: CreateThumbnailIdeaInput) {
   if (!input.outlierId && !freeformIdea) {
     throw new UserFacingError("Falta la idea de video");
   }
-  if (input.referenceOutlierIds.length > MAX_REFERENCES) {
+  const totalReferences = input.referenceOutlierIds.length + input.referenceViralThumbnailIds.length;
+  if (totalReferences > MAX_REFERENCES) {
     throw new UserFacingError(`Máximo ${MAX_REFERENCES} referencias`);
   }
 
@@ -71,21 +73,41 @@ export async function createThumbnailIdea(input: CreateThumbnailIdeaInput) {
       ideaSource = { type: "freeform", text: freeformIdea as string };
     }
 
-    const references = input.referenceOutlierIds.length
+    const outlierReferences = input.referenceOutlierIds.length
       ? await prisma.outlier.findMany({
           where: { id: { in: input.referenceOutlierIds } },
           select: { id: true, title: true, thumbnailUrl: true },
         })
       : [];
 
+    const viralReferences = input.referenceViralThumbnailIds.length
+      ? await prisma.viralThumbnail.findMany({
+          where: { id: { in: input.referenceViralThumbnailIds } },
+          select: { id: true, label: true, blobUrl: true },
+        })
+      : [];
+
     const output = await generateThumbnailIdea({
       ideaSource,
       requestedHostFeature: input.requestedHostFeature,
-      references: references.map((r) => ({
-        outlierId: r.id,
-        title: r.title,
-        thumbnailUrl: r.thumbnailUrl,
-      })),
+      references: [
+        ...outlierReferences.map(
+          (r): BuildPromptInput["references"][number] => ({
+            source: "outlier",
+            id: r.id,
+            title: r.title,
+            thumbnailUrl: r.thumbnailUrl,
+          })
+        ),
+        ...viralReferences.map(
+          (r): BuildPromptInput["references"][number] => ({
+            source: "viral",
+            id: r.id,
+            label: r.label,
+            thumbnailUrl: r.blobUrl,
+          })
+        ),
+      ],
     });
 
     const created = await prisma.thumbnailIdea.create({
@@ -93,7 +115,8 @@ export async function createThumbnailIdea(input: CreateThumbnailIdeaInput) {
         sourceOutlierId: input.outlierId,
         freeformIdea: input.outlierId ? null : freeformIdea,
         requestedHostFeature: input.requestedHostFeature,
-        referenceOutliers: { connect: references.map((r) => ({ id: r.id })) },
+        referenceOutliers: { connect: outlierReferences.map((r) => ({ id: r.id })) },
+        viralReferences: { connect: viralReferences.map((r) => ({ id: r.id })) },
         angleCandidates: output.angleCandidates as unknown as Prisma.InputJsonValue,
         chosenAngle: output.chosenAngle,
         referenceAnalysis:

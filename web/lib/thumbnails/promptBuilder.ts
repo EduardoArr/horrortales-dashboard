@@ -40,22 +40,24 @@ export function buildThumbnailIdeaTool(): Anthropic.Tool {
           items: {
             type: "object",
             properties: {
-              outlierId: { type: "string" },
+              referenceId: { type: "string" },
               mainPromise: { type: "string" },
               emotion: { type: "string" },
               dominantVisual: { type: "string" },
               whatIsShown: { type: "string" },
               whatIsHidden: { type: "string" },
               repeatingPattern: { type: "string" },
+              compositionNotes: { type: "string" },
             },
             required: [
-              "outlierId",
+              "referenceId",
               "mainPromise",
               "emotion",
               "dominantVisual",
               "whatIsShown",
               "whatIsHidden",
               "repeatingPattern",
+              "compositionNotes",
             ],
             additionalProperties: false,
           },
@@ -156,10 +158,19 @@ generate_thumbnail_idea:
 responder; por qué es más fuerte que describir el video literalmente o que apoyarse en \
 el dato literal más fuerte si ya alcanza; y por qué es coherente con el título/descripción \
 dados, sin inventar ni contradecir nada de ahí), marcando uno como recommended=true.
-2. Si hay referencias (miniaturas/títulos de otros outliers del mismo nicho), analizá \
-cada una: promesa principal, emoción que activa, elemento visual dominante, qué muestra, \
-qué oculta a propósito, patrón que se repite. Si no hay referencias, referenceAnalysis \
-debe ser null. Nunca copiés el patrón literal — aplicalo al ángulo elegido.
+2. Si hay referencias, analizá cada una. Pueden ser de dos tipos, mezclados en la misma \
+lista: (a) outliers de nuestra propia base de datos (mismo nicho, encontrados por el \
+buscador), o (b) miniaturas virales que el usuario subió a mano como inspiración — capturas \
+de miniaturas que le funcionaron a otros canales, no necesariamente del mismo nicho exacto. \
+Para cada una: promesa principal, emoción que activa, elemento visual dominante, qué \
+muestra, qué oculta a propósito, patrón que se repite, y compositionNotes — notas de \
+composición concretas y reutilizables: ángulo de cámara, encuadre (primer plano vs plano \
+medio vs plano general), dirección de mirada, intensidad de la expresión facial, ubicación \
+y peso del texto si tiene. compositionNotes es el campo más importante cuando la referencia \
+es una miniatura viral: ahí es donde vive el "por qué funciona visualmente", separado del \
+tema o el caso que muestra. Si no hay referencias, referenceAnalysis debe ser null. Nunca \
+copiés el contenido literal (personas, objetos, texto exacto) de una referencia — extraé el \
+patrón de composición que la hace funcionar y aplicalo al ángulo elegido.
 3. 10 títulos (máximo 60 caracteres, ideal menos de 50, ninguno con estructuras gastadas \
 tipo "Cómo hacer X en Y pasos"), cada uno atacando el ángulo, no describiendo el tema, con \
 una nota de qué miedo o deseo específico activa, rankeados de mayor a menor potencial de \
@@ -169,10 +180,16 @@ facial si corresponde (ver abajo), contraste de color (colores opuestos que pele
 visualmente, no que combinen lindo), qué información oculta la miniatura a propósito, y \
 la regla de complemento (miniatura y título dicen cosas DISTINTAS que se completan, nunca \
 repiten la misma idea) — más 5 opciones de texto corto (3-5 palabras) que complementen el \
-título sin repetirlo.
+título sin repetirlo. Si hiciste referenceAnalysis, el elemento visual principal y la \
+expresión facial tienen que basarse en los compositionNotes identificados (encuadre, \
+ángulo de cámara, intensidad de expresión) — no en el contenido literal de la referencia.
 5. Un prompt de generación de imagen listo para pegar en un generador de imágenes \
 (formato 16:9): composición, sujeto principal, fondo, iluminación, colores, emoción, \
-estilo visual. Sin texto dentro de la imagen salvo que sea estrictamente necesario.
+estilo visual. Si hay referenceAnalysis, el prompt tiene que traducir explícitamente los \
+patrones de composición ganadores identificados (ángulo de cámara, encuadre, distancia \
+focal, intensidad de expresión) al nuevo concepto — nunca describir ni copiar el contenido \
+literal de una referencia (una persona, objeto o escena específica de otra miniatura). Sin \
+texto dentro de la imagen salvo que sea estrictamente necesario.
 
 Sobre los presentadores: el campo requestedHostFeature del pedido indica si esta \
 miniatura debe mostrar a un presentador, a ambos, o a ninguno. Si es NONE, \
@@ -220,14 +237,23 @@ export function buildThumbnailIdeaMessages(
 
   if (input.references.length === 0) {
     parts.push("");
-    parts.push("No se proporcionaron referencias de otros outliers.");
+    parts.push("No se proporcionaron referencias de otros outliers ni miniaturas virales.");
   } else {
     parts.push("");
     parts.push(`REFERENCIAS (${input.references.length}) — analizalas en el paso 2:`);
     input.references.forEach((ref, i) => {
-      parts.push(`Referencia ${i + 1} (outlierId=${ref.outlierId}): "${ref.title}"`);
-      if (!ref.thumbnailUrl) {
-        parts.push(`  (sin miniatura disponible, solo título)`);
+      if (ref.source === "outlier") {
+        parts.push(
+          `Referencia ${i + 1} (referenceId=${ref.id}, outlier de nuestra base): "${ref.title}"`
+        );
+        if (!ref.thumbnailUrl) {
+          parts.push(`  (sin miniatura disponible, solo título)`);
+        }
+      } else {
+        parts.push(
+          `Referencia ${i + 1} (referenceId=${ref.id}, miniatura viral subida a mano por el usuario)` +
+            (ref.label ? `: ${ref.label}` : "")
+        );
       }
     });
   }

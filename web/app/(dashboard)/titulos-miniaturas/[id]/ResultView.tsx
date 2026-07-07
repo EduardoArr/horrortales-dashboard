@@ -125,7 +125,7 @@ export function ResultView({
           <ul className="flex flex-col gap-2">
             {referenceAnalysis.map((r) => (
               <li
-                key={r.outlierId}
+                key={r.referenceId}
                 className="rounded-md border border-neutral-800 bg-neutral-950 p-3 text-xs text-neutral-400"
               >
                 <p>
@@ -142,6 +142,9 @@ export function ResultView({
                 </p>
                 <p>
                   <span className="text-neutral-300">Patrón:</span> {r.repeatingPattern}
+                </p>
+                <p>
+                  <span className="text-neutral-300">Composición:</span> {r.compositionNotes}
                 </p>
               </li>
             ))}

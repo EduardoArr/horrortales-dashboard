@@ -23,6 +23,12 @@ export default async function TitulosMiniaturasPage() {
         </div>
         <div className="flex gap-2">
           <Link
+            href="/titulos-miniaturas/virales"
+            className="rounded-md border border-neutral-700 px-4 py-2 text-sm text-neutral-200 hover:bg-neutral-800"
+          >
+            Miniaturas virales
+          </Link>
+          <Link
             href="/titulos-miniaturas/fotos"
             className="rounded-md border border-neutral-700 px-4 py-2 text-sm text-neutral-200 hover:bg-neutral-800"
           >

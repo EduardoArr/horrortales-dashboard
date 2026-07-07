@@ -8,7 +8,7 @@ export default async function NewThumbnailIdeaPage({
 }) {
   const { outlierId } = await searchParams;
 
-  const [outlier, savedOutliers] = await Promise.all([
+  const [outlier, savedOutliers, viralThumbnails] = await Promise.all([
     outlierId
       ? prisma.outlier.findUnique({
           where: { id: outlierId },
@@ -28,6 +28,10 @@ export default async function NewThumbnailIdeaPage({
         score: true,
         channel: { select: { title: true } },
       },
+    }),
+    prisma.viralThumbnail.findMany({
+      orderBy: { uploadedAt: "desc" },
+      select: { id: true, label: true, blobUrl: true },
     }),
   ]);
 
@@ -49,6 +53,7 @@ export default async function NewThumbnailIdeaPage({
           score: o.score,
           channelTitle: o.channel.title,
         }))}
+        viralThumbnails={viralThumbnails}
       />
     </div>
   );

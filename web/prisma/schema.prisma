@@ -17,6 +17,7 @@ model User {
   discoveryRuns         DiscoveryRun[]
   keywordSearches       KeywordSearch[]
   hostPhotosUploaded    HostPhoto[]     @relation("HostPhotoUploadedBy")
+  viralThumbnailsUploaded ViralThumbnail[] @relation("ViralThumbnailUploadedBy")
   thumbnailIdeasCreated ThumbnailIdea[] @relation("ThumbnailIdeaCreatedBy")
   scriptsCreated        Script[]        @relation("ScriptCreatedBy")
 }
@@ -178,12 +179,28 @@ model HostPhoto {
   @@index([hostLabel])
 }
 
+model ViralThumbnail {
+  id               String   @id @default(cuid())
+  blobUrl          String
+  blobPathname     String
+  originalFilename String?
+  contentType      String
+  sizeBytes        Int
+  label            String?
+  uploadedAt       DateTime @default(now())
+  uploadedById     String?
+  uploadedBy       User?    @relation("ViralThumbnailUploadedBy", fields: [uploadedById], references: [id])
+
+  thumbnailIdeas ThumbnailIdea[] @relation("ThumbnailIdeaViralReferences")
+}
+
 model ThumbnailIdea {
   id                   String                @id @default(cuid())
   sourceOutlierId      String?
   sourceOutlier        Outlier?              @relation(fields: [sourceOutlierId], references: [id])
   freeformIdea         String?
   referenceOutliers    Outlier[]             @relation("ThumbnailIdeaReferences")
+  viralReferences      ViralThumbnail[]      @relation("ThumbnailIdeaViralReferences")
   requestedHostFeature HostFeaturePreference @default(NONE)
 
   // Structured output from the Anthropic API — see lib/thumbnails/types.ts

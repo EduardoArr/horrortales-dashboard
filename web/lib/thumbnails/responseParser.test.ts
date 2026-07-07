@@ -27,19 +27,20 @@ describe("parseThumbnailIdeaOutput", () => {
       ...validPayload,
       referenceAnalysis: [
         {
-          outlierId: "o1",
+          referenceId: "o1",
           mainPromise: "p",
           emotion: "e",
           dominantVisual: "v",
           whatIsShown: "s",
           whatIsHidden: "h",
           repeatingPattern: "r",
+          compositionNotes: "c",
         },
       ],
     };
     const result = parseThumbnailIdeaOutput(payload);
     expect(result.referenceAnalysis).toHaveLength(1);
-    expect(result.referenceAnalysis?.[0].outlierId).toBe("o1");
+    expect(result.referenceAnalysis?.[0].referenceId).toBe("o1");
   });
 
   it("throws when angleCandidates has 4 items instead of 5", () => {

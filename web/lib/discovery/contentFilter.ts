@@ -49,3 +49,41 @@ export function isLikelyListicle(title: string, description = ""): boolean {
   const text = `${title} ${description}`;
   return LISTICLE_MARKERS.some((marker) => marker.test(text));
 }
+
+/**
+ * Best-effort filter for two off-topic genres that slip through channel-level
+ * discovery: mass-produced scripted "drama short" channels (infidelity/revenge
+ * soap-opera stories, tagged with a recognizable hashtag cluster) and sports
+ * content. Both get discovered because a single loosely-matching video from
+ * the channel surfaced for a generic keyword (e.g. "el caso de", "la verdad
+ * sobre") — discovery only checks the channel's subs/age/country, not topic,
+ * so every other recent upload from that channel becomes score-eligible too.
+ * See lib/discovery/scoreChannels.ts, which applies this per-video alongside
+ * isLikelyFictional/isLikelyListicle.
+ */
+const SCRIPTED_DRAMA_MARKERS: RegExp[] = [
+  /#shortdramas?\b/i,
+  /#dramashorts?\b/i,
+  /#cenicienta\b/i,
+  /#peliculacompleta\b/i,
+  /#amorpropio\b/i,
+  /#chicavaliente\b/i,
+  /#millonariofr[ií]o\b/i,
+  /#shortfilm\b[\s\S]*#drama\b/i,
+];
+
+const SPORTS_MARKERS: RegExp[] = [
+  /\b(f[uú]tbol|soccer)\b/i,
+  /\bmessi\b/i,
+  /\b(champions league|la liga|liga mx)\b/i,
+  /\bgol de\b/i,
+  /\bresumen del partido\b/i,
+];
+
+export function isLikelyOffTopic(title: string, description = ""): boolean {
+  const text = `${title} ${description}`;
+  return (
+    SCRIPTED_DRAMA_MARKERS.some((marker) => marker.test(text)) ||
+    SPORTS_MARKERS.some((marker) => marker.test(text))
+  );
+}

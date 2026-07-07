@@ -7,8 +7,9 @@ export interface UploadedPhoto {
   size: number;
 }
 
-/** Only module in the app that imports @vercel/blob — everything else goes
- *  through this thin wrapper so the storage provider stays swappable. */
+/** Thin wrapper around @vercel/blob so the storage provider stays swappable —
+ *  see lib/viralThumbnails/blobClient.ts for the equivalent for viral-thumbnail
+ *  reference uploads. */
 export async function uploadHostPhotoBlob(
   filename: string,
   file: File

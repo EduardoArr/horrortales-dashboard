@@ -51,14 +51,40 @@ describe("buildThumbnailIdeaMessages", () => {
     const messages = buildThumbnailIdeaMessages(
       baseInput({
         references: [
-          { outlierId: "o1", title: "Ref with thumb", thumbnailUrl: "https://i.ytimg.com/vi/x/hq.jpg" },
-          { outlierId: "o2", title: "Ref without thumb", thumbnailUrl: null },
+          {
+            source: "outlier",
+            id: "o1",
+            title: "Ref with thumb",
+            thumbnailUrl: "https://i.ytimg.com/vi/x/hq.jpg",
+          },
+          { source: "outlier", id: "o2", title: "Ref without thumb", thumbnailUrl: null },
         ],
       })
     );
     const blocks = messages[0].content as { type: string }[];
     const imageBlocks = blocks.filter((b) => b.type === "image");
     expect(imageBlocks).toHaveLength(1);
+  });
+
+  it("includes an image block for viral thumbnail references", () => {
+    const messages = buildThumbnailIdeaMessages(
+      baseInput({
+        references: [
+          {
+            source: "viral",
+            id: "v1",
+            label: "Primer plano, contraste rojo/azul",
+            thumbnailUrl: "https://example.public.blob.vercel-storage.com/viral.jpg",
+          },
+        ],
+      })
+    );
+    const blocks = messages[0].content as { type: string; text?: string }[];
+    const imageBlocks = blocks.filter((b) => b.type === "image");
+    expect(imageBlocks).toHaveLength(1);
+    const textBlock = blocks.find((b) => b.type === "text");
+    expect(textBlock?.text).toContain("miniatura viral subida a mano");
+    expect(textBlock?.text).toContain("Primer plano, contraste rojo/azul");
   });
 
   it("mentions the outlier title and description when the idea comes from an outlier", () => {

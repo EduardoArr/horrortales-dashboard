@@ -3,7 +3,7 @@
 import { useTransition } from "react";
 import Link from "next/link";
 import type { OutlierStatus } from "@prisma/client";
-import { updateOutlierStatus } from "./actions";
+import { blockChannel, updateOutlierStatus } from "./actions";
 
 export interface OutlierRow {
   id: string;
@@ -17,6 +17,7 @@ export interface OutlierRow {
   viewsVsSubs: number;
   status: OutlierStatus;
   channel: {
+    id: string;
     title: string;
     country: string | null;
     isCountryVerified: boolean;
@@ -53,6 +54,19 @@ export function OutlierTable({ outliers }: { outliers: OutlierRow[] }) {
   function setStatus(id: string, status: OutlierStatus) {
     startTransition(async () => {
       await updateOutlierStatus(id, status);
+    });
+  }
+
+  function blockChannelWithConfirm(channelId: string, channelTitle: string) {
+    if (
+      !window.confirm(
+        `¿Bloquear el canal "${channelTitle}"? No se va a volver a puntuar en futuras búsquedas y sus outliers actuales se van a descartar.`
+      )
+    ) {
+      return;
+    }
+    startTransition(async () => {
+      await blockChannel(channelId);
     });
   }
 
@@ -149,6 +163,15 @@ export function OutlierTable({ outliers }: { outliers: OutlierRow[] }) {
                     className="rounded-md border border-neutral-700 px-2 py-1 text-xs text-neutral-200 hover:bg-neutral-800 disabled:opacity-50"
                   >
                     Usado
+                  </button>
+                  <button
+                    type="button"
+                    disabled={isPending}
+                    onClick={() => blockChannelWithConfirm(outlier.channel.id, outlier.channel.title)}
+                    title="El canal no tiene que ver con el nicho — no volver a mostrarlo"
+                    className="rounded-md border border-neutral-700 px-2 py-1 text-xs text-neutral-400 hover:bg-neutral-800 disabled:opacity-50"
+                  >
+                    Bloquear canal
                   </button>
                   {(outlier.status === "SAVED" || outlier.status === "USED") && (
                     <Link

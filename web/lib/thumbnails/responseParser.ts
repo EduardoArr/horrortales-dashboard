@@ -38,15 +38,16 @@ function parseAngleCandidate(raw: unknown, index: number): AngleCandidate {
 function parseReferenceAnalysis(raw: unknown, index: number): ReferenceAnalysis {
   if (!isRecord(raw)) fail(`referenceAnalysis[${index}] is not an object`);
   const {
-    outlierId,
+    referenceId,
     mainPromise,
     emotion,
     dominantVisual,
     whatIsShown,
     whatIsHidden,
     repeatingPattern,
+    compositionNotes,
   } = raw;
-  if (!isString(outlierId)) fail(`referenceAnalysis[${index}].outlierId must be a string`);
+  if (!isString(referenceId)) fail(`referenceAnalysis[${index}].referenceId must be a string`);
   if (!isString(mainPromise)) fail(`referenceAnalysis[${index}].mainPromise must be a string`);
   if (!isString(emotion)) fail(`referenceAnalysis[${index}].emotion must be a string`);
   if (!isString(dominantVisual))
@@ -55,14 +56,17 @@ function parseReferenceAnalysis(raw: unknown, index: number): ReferenceAnalysis 
   if (!isString(whatIsHidden)) fail(`referenceAnalysis[${index}].whatIsHidden must be a string`);
   if (!isString(repeatingPattern))
     fail(`referenceAnalysis[${index}].repeatingPattern must be a string`);
+  if (!isString(compositionNotes))
+    fail(`referenceAnalysis[${index}].compositionNotes must be a string`);
   return {
-    outlierId,
+    referenceId,
     mainPromise,
     emotion,
     dominantVisual,
     whatIsShown,
     whatIsHidden,
     repeatingPattern,
+    compositionNotes,
   };
 }
 

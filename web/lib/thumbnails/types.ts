@@ -9,13 +9,14 @@ export interface AngleCandidate {
 }
 
 export interface ReferenceAnalysis {
-  outlierId: string;
+  referenceId: string;
   mainPromise: string;
   emotion: string;
   dominantVisual: string;
   whatIsShown: string;
   whatIsHidden: string;
   repeatingPattern: string;
+  compositionNotes: string;
 }
 
 export interface TitleCandidate {
@@ -44,11 +45,21 @@ export interface ThumbnailIdeaGenerationOutput {
   imagePrompt: string;
 }
 
-export interface ReferenceInput {
-  outlierId: string;
+export interface OutlierReferenceInput {
+  source: "outlier";
+  id: string;
   title: string;
   thumbnailUrl: string | null;
 }
+
+export interface ViralReferenceInput {
+  source: "viral";
+  id: string;
+  label: string | null;
+  thumbnailUrl: string;
+}
+
+export type ReferenceInput = OutlierReferenceInput | ViralReferenceInput;
 
 export type IdeaSource =
   | { type: "outlier"; outlierId: string; title: string; description: string | null }

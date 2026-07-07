@@ -2,7 +2,7 @@ import { prisma } from "../prisma";
 import { findOutliers, MIN_LONG_FORM_SECONDS } from "../outliers";
 import { fetchRecentVideoIds, fetchVideoDetails } from "./youtubeClient";
 import { wouldExceedCap, recordUnitsUsed } from "./quota";
-import { isLikelyFictional, isLikelyListicle } from "./contentFilter";
+import { isLikelyFictional, isLikelyListicle, isLikelyOffTopic } from "./contentFilter";
 import {
   CHANNELS_TO_REFRESH_PER_RUN,
   MIN_CHANNEL_AGE_MONTHS,
@@ -76,7 +76,8 @@ export async function scoreChannels(
       (v) =>
         v.durationSeconds >= MIN_LONG_FORM_SECONDS &&
         !isLikelyFictional(v.title, v.description) &&
-        !isLikelyListicle(v.title, v.description)
+        !isLikelyListicle(v.title, v.description) &&
+        !isLikelyOffTopic(v.title, v.description)
     );
     if (longForm.length < MIN_LONG_FORM_VIDEOS) {
       channelsSkippedTooFewVideos += 1;

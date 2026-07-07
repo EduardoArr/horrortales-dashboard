@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import type { HostFeaturePreference } from "@prisma/client";
 import {
   createThumbnailIdea,
@@ -28,6 +29,12 @@ export interface SavedOutlierOption {
   channelTitle: string;
 }
 
+export interface ViralThumbnailOption {
+  id: string;
+  label: string | null;
+  blobUrl: string;
+}
+
 const HOST_FEATURE_LABEL: Record<HostFeaturePreference, string> = {
   NONE: "Ninguno",
   HOST_1: "Host 1",
@@ -42,9 +49,11 @@ function formatViews(n: number): string {
 export function NewIdeaForm({
   initialOutlier,
   savedOutliers,
+  viralThumbnails,
 }: {
   initialOutlier: InitialOutlier | null;
   savedOutliers: SavedOutlierOption[];
+  viralThumbnails: ViralThumbnailOption[];
 }) {
   const router = useRouter();
   const [pickedOutlier, setPickedOutlier] = useState<InitialOutlier | null>(initialOutlier);
@@ -54,10 +63,13 @@ export function NewIdeaForm({
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<ReferenceSearchResult[]>([]);
   const [selected, setSelected] = useState<ReferenceSearchResult[]>([]);
+  const [selectedViralIds, setSelectedViralIds] = useState<string[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [isSearching, startSearch] = useTransition();
   const [isSubmitting, startSubmit] = useTransition();
   const [isDismissing, startDismiss] = useTransition();
+
+  const totalReferences = selected.length + selectedViralIds.length;
 
   function pickSavedOutlier(o: SavedOutlierOption) {
     setPickedOutlier({
@@ -87,8 +99,17 @@ export function NewIdeaForm({
     setSelected((prev) => {
       const already = prev.some((r) => r.id === ref.id);
       if (already) return prev.filter((r) => r.id !== ref.id);
-      if (prev.length >= MAX_REFERENCES) return prev;
+      if (totalReferences >= MAX_REFERENCES) return prev;
       return [...prev, ref];
+    });
+  }
+
+  function toggleViralReference(id: string) {
+    setSelectedViralIds((prev) => {
+      const already = prev.includes(id);
+      if (already) return prev.filter((v) => v !== id);
+      if (totalReferences >= MAX_REFERENCES) return prev;
+      return [...prev, id];
     });
   }
 
@@ -105,6 +126,7 @@ export function NewIdeaForm({
           freeformIdea: pickedOutlier ? null : freeformIdea,
           requestedHostFeature: hostFeature,
           referenceOutlierIds: selected.map((r) => r.id),
+          referenceViralThumbnailIds: selectedViralIds,
         });
         router.push(`/titulos-miniaturas/${result.id}`);
       } catch (err) {
@@ -218,7 +240,51 @@ export function NewIdeaForm({
 
       <div>
         <h2 className="mb-2 text-sm font-medium text-neutral-300">
-          Referencias (opcional, hasta {MAX_REFERENCES})
+          Miniaturas virales de referencia (opcional, hasta {MAX_REFERENCES} en total)
+        </h2>
+        <p className="mb-2 text-xs text-neutral-500">
+          Elegí miniaturas que te funcionaron a otros canales — Claude analiza su
+          composición (encuadre, ángulo, contraste) y la usa para armar un mejor concepto,
+          sin copiar el contenido literal.
+        </p>
+        {viralThumbnails.length === 0 ? (
+          <p className="text-xs text-neutral-500">
+            Todavía no subiste ninguna.{" "}
+            <Link href="/titulos-miniaturas/virales" className="text-red-400 hover:underline">
+              Subí miniaturas virales
+            </Link>{" "}
+            para usarlas acá.
+          </p>
+        ) : (
+          <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6">
+            {viralThumbnails.map((v) => {
+              const isSelected = selectedViralIds.includes(v.id);
+              return (
+                <button
+                  key={v.id}
+                  type="button"
+                  onClick={() => toggleViralReference(v.id)}
+                  disabled={!isSelected && totalReferences >= MAX_REFERENCES}
+                  className={`overflow-hidden rounded-md border text-left disabled:opacity-40 ${
+                    isSelected ? "border-red-600 ring-2 ring-red-600" : "border-neutral-800"
+                  }`}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={v.blobUrl}
+                    alt={v.label ?? "Miniatura viral"}
+                    className="aspect-video w-full object-cover"
+                  />
+                </button>
+              );
+            })}
+          </div>
+        )}
+      </div>
+
+      <div>
+        <h2 className="mb-2 text-sm font-medium text-neutral-300">
+          Referencias de outliers (opcional, hasta {MAX_REFERENCES} en total)
         </h2>
         <div className="flex gap-2">
           <input
@@ -247,7 +313,7 @@ export function NewIdeaForm({
                   <button
                     type="button"
                     onClick={() => toggleReference(r)}
-                    disabled={!isSelected && selected.length >= MAX_REFERENCES}
+                    disabled={!isSelected && totalReferences >= MAX_REFERENCES}
                     className={`w-full rounded-md border px-3 py-2 text-left text-sm disabled:opacity-40 ${
                       isSelected
                         ? "border-red-800 bg-red-900/30 text-red-100"
@@ -262,9 +328,9 @@ export function NewIdeaForm({
           </ul>
         )}
 
-        {selected.length > 0 && (
+        {totalReferences > 0 && (
           <p className="mt-2 text-xs text-neutral-500">
-            {selected.length} referencia(s) seleccionada(s).
+            {totalReferences} referencia(s) seleccionada(s) en total.
           </p>
         )}
       </div>

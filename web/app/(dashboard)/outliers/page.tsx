@@ -65,6 +65,7 @@ export default async function OutliersPage({
       include: {
         channel: {
           select: {
+            id: true,
             title: true,
             country: true,
             isCountryVerified: true,
@@ -89,6 +90,7 @@ export default async function OutliersPage({
     viewsVsSubs: o.viewsVsSubs,
     status: o.status,
     channel: {
+      id: o.channel.id,
       title: o.channel.title,
       country: o.channel.country,
       isCountryVerified: o.channel.isCountryVerified,

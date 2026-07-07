@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isLikelyFictional, isLikelyListicle } from "./contentFilter";
+import { isLikelyFictional, isLikelyListicle, isLikelyOffTopic } from "./contentFilter";
 
 describe("isLikelyFictional", () => {
   it("flags creepypasta-style titles", () => {
@@ -57,5 +57,32 @@ describe("isLikelyListicle", () => {
 
   it("does not flag a 911 call title (emergency number, not a count)", () => {
     expect(isLikelyListicle("911 Call RESCUES Woman From Her Neighbor From Hell!")).toBe(false);
+  });
+});
+
+describe("isLikelyOffTopic", () => {
+  it("flags scripted drama-short hashtag clusters", () => {
+    expect(
+      isLikelyOffTopic(
+        "Mi esposo aseado no me tocó en 3 años. ¡Come sobras de su amante!",
+        "#drama #shortdramas #dramashorts #shortfilm #cenicienta #peliculacompleta #amorpropio"
+      )
+    ).toBe(true);
+  });
+
+  it("flags football/sports titles", () => {
+    expect(
+      isLikelyOffTopic(
+        "ÚLTIMA HORA: TRAS EL PARTIDO MESSI CUMPLE EL SUEÑO DE VOZINHA"
+      )
+    ).toBe(true);
+  });
+
+  it("does not flag a real true-crime title", () => {
+    expect(isLikelyOffTopic("El Caso de Elisa Lam: Análisis Completo")).toBe(false);
+  });
+
+  it("does not flag a real title that happens to mention revenge", () => {
+    expect(isLikelyOffTopic("Se vengó del asesino de su hija 20 años después")).toBe(false);
   });
 });

@@ -20,11 +20,17 @@ export default async function ThumbnailIdeaPage({
     include: {
       sourceOutlier: { select: { title: true } },
       referenceOutliers: { select: { id: true, title: true } },
+      viralReferences: { select: { id: true, label: true } },
       scripts: { select: { id: true, chosenTitle: true, title: true, currentPhase: true } },
     },
   });
 
   if (!idea) notFound();
+
+  const referenceLabels = [
+    ...idea.referenceOutliers.map((r) => r.title),
+    ...idea.viralReferences.map((r) => r.label ?? "miniatura viral sin nota"),
+  ];
 
   return (
     <div>
@@ -33,8 +39,7 @@ export default async function ThumbnailIdeaPage({
       </h1>
       <p className="mb-6 text-sm text-neutral-500">
         Generado el {idea.createdAt.toLocaleDateString("es-ES")}
-        {idea.referenceOutliers.length > 0 &&
-          ` · referencias: ${idea.referenceOutliers.map((r) => r.title).join(", ")}`}
+        {referenceLabels.length > 0 && ` · referencias: ${referenceLabels.join(", ")}`}
       </p>
 
       <ResultView
