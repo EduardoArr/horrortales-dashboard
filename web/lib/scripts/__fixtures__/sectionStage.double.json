@@ -1,0 +1,14 @@
+{
+  "status": "ok",
+  "question": null,
+  "variations": [
+    {
+      "text": "Son las 3:14 de la madrugada. El teléfono suena en la central del 911. Nadie habla. Solo respiración, y después, silencio.\n\n¿Quién llama a esa hora y corta sin decir una palabra?\n\nEl operador se queda con la línea abierta. Cuarenta segundos de ruido de fondo antes de que la señal se pierda para siempre.",
+      "wordCount": 52
+    },
+    {
+      "text": "3:14 AM. Una llamada al 911. Del otro lado, nada. Ni un nombre, ni un pedido de ayuda. Solo la respiración de alguien que no puede o no quiere hablar.\n\n¿Qué obliga a alguien a marcar y quedarse en silencio?\n\nLa línea sigue abierta cuarenta segundos más. Después, nada.",
+      "wordCount": 47
+    }
+  ]
+}

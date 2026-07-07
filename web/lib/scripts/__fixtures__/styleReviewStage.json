@@ -1,0 +1,20 @@
+{
+  "status": "ok",
+  "question": null,
+  "report": {
+    "structuralChanges": [
+      "Acortaste la sección 3 a la mitad — preferís llegar más rápido al hallazgo de la casa vacía.",
+      "Moviste el CTA de mitad de guion una sección más adelante."
+    ],
+    "styleChanges": [
+      "Reemplazaste construcciones pasivas por frases directas en primera persona del narrador.",
+      "Sacaste las conclusiones tipo \"esto nos demuestra que\" al final de las secciones."
+    ],
+    "repeatedPatterns": [
+      "En casi todas las secciones, cortaste la última oración del rehook a la mitad para dejarlo más abrupto."
+    ],
+    "factualCorrections": [
+      "Corregiste la hora de la llamada al 911 de las 3:14 a las 3:17 — verificar siempre la hora exacta contra la fuente antes de redondear."
+    ]
+  }
+}

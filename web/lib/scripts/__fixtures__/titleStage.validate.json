@@ -1,0 +1,11 @@
+{
+  "status": "ok",
+  "question": null,
+  "mode": "validate",
+  "assessment": {
+    "alignmentVerdict": "aligned",
+    "reasoning": "El título promete indignación por la demora institucional y la investigación documenta exactamente ese hecho (40 minutos de demora en el despacho de la llamada), respaldado por el registro oficial del 911 citado en la investigación.",
+    "warning": null
+  },
+  "candidates": null
+}

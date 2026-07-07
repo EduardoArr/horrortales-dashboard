@@ -1,0 +1,48 @@
+{
+  "status": "ok",
+  "question": null,
+  "payoffs": [
+    {
+      "sectionOrder": 1,
+      "question": "¿Por qué corta la llamada sin decir nada?",
+      "payoff": "La línea queda abierta 40 segundos más, con ruido de fondo, antes de perder la señal.",
+      "sourceNote": "Registro oficial del 911 citado en la investigación."
+    },
+    {
+      "sectionOrder": 2,
+      "question": "¿Por qué tardó tanto la patrulla?",
+      "payoff": "El despacho no tiene ninguna nota que explique los 40 minutos, contra los 5 que exige el protocolo.",
+      "sourceNote": "Protocolo del condado y bitácora de despacho, investigación sección 2."
+    },
+    {
+      "sectionOrder": 3,
+      "question": "¿Qué encontró la policía al llegar?",
+      "payoff": "La casa está vacía, sin signos de forcejeo, pero el teléfono sigue con la llamada activa.",
+      "sourceNote": "Informe de la escena, investigación sección 3."
+    },
+    {
+      "sectionOrder": 4,
+      "question": "¿Hubo alguna alerta antes de esa noche?",
+      "payoff": "Hubo tres avisos previos con el mismo motivo, y ninguno derivó en una visita.",
+      "sourceNote": "Bitácora de llamadas previas, brain dump del usuario + investigación sección 4."
+    },
+    {
+      "sectionOrder": 5,
+      "question": "¿Dónde apareció el auto?",
+      "payoff": "A 200km, con las llaves puestas y sin ningún daño visible.",
+      "sourceNote": "Reporte de hallazgo del vehículo, investigación sección 5."
+    },
+    {
+      "sectionOrder": 6,
+      "question": "¿Qué decía el último mensaje?",
+      "payoff": "Ubicaba a la persona en un lugar distinto al que reporta el informe oficial.",
+      "sourceNote": "Capturas de mensajes citadas en la investigación, sección 6."
+    },
+    {
+      "sectionOrder": 7,
+      "question": "¿Por qué nadie encontró nada en un año?",
+      "payoff": "El operativo oficial nunca cubrió la zona donde un vecino, un año después, encuentra la primera pista real.",
+      "sourceNote": "Mapa del operativo oficial vs. brain dump del usuario sobre el hallazgo del vecino."
+    }
+  ]
+}

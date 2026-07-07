@@ -1,0 +1,55 @@
+{
+  "status": "ok",
+  "question": null,
+  "sections": [
+    {
+      "order": 1,
+      "workingTitle": "La llamada de las 3:14",
+      "openProblem": "Alguien marca al 911 de madrugada y corta sin hablar.",
+      "payoffPreview": "La línea queda abierta y el operador escucha ruido de fondo antes de perder la señal.",
+      "sourceNote": "Registro oficial del 911 citado en la investigación."
+    },
+    {
+      "order": 2,
+      "workingTitle": "Cuarenta minutos de silencio",
+      "openProblem": "El despacho del patrullero se demora muy por encima del protocolo.",
+      "payoffPreview": "El protocolo del condado exige 5 minutos; tardaron 40, sin justificación registrada.",
+      "sourceNote": "Protocolo del condado y bitácora de despacho, investigación sección 2."
+    },
+    {
+      "order": 3,
+      "workingTitle": "La casa vacía",
+      "openProblem": "Cuando llega la policía, no hay nadie.",
+      "payoffPreview": "No hay signos de forcejeo, pero el teléfono sigue con la llamada activa.",
+      "sourceNote": "Informe de la escena, investigación sección 3."
+    },
+    {
+      "order": 4,
+      "workingTitle": "Las tres llamadas que nadie atendió",
+      "openProblem": "Hubo avisos previos sobre esa dirección que fueron ignorados.",
+      "payoffPreview": "Los tres reportes previos citaban el mismo motivo y ninguno derivó en una visita.",
+      "sourceNote": "Bitácora de llamadas previas, brain dump del usuario + investigación sección 4."
+    },
+    {
+      "order": 5,
+      "workingTitle": "El auto en la ruta 9",
+      "openProblem": "Aparece el vehículo, pero no hay rastro de la persona.",
+      "payoffPreview": "El auto está a 200km, con las llaves puestas y sin daños.",
+      "sourceNote": "Reporte de hallazgo del vehículo, investigación sección 5."
+    },
+    {
+      "order": 6,
+      "workingTitle": "El mensaje que no cierra",
+      "openProblem": "El último mensaje de texto contradice la versión oficial.",
+      "payoffPreview": "El mensaje ubica a la persona en un lugar distinto al que reporta el informe policial.",
+      "sourceNote": "Capturas de mensajes citadas en la investigación, sección 6."
+    },
+    {
+      "order": 7,
+      "workingTitle": "La búsqueda en la zona equivocada",
+      "openProblem": "El operativo de búsqueda nunca cubrió la zona donde apareció el auto.",
+      "payoffPreview": "Un año después, un vecino encuentra la primera pista real fuera del área oficial de búsqueda.",
+      "sourceNote": "Mapa del operativo oficial vs. brain dump del usuario sobre el hallazgo del vecino."
+    }
+  ]
+}

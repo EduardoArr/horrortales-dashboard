@@ -1,0 +1,11 @@
+{
+  "items": [
+    { "contentDetails": { "videoId": "v1" } },
+    { "contentDetails": { "videoId": "v2" } },
+    { "contentDetails": { "videoId": "v3" } },
+    { "contentDetails": { "videoId": "v4" } },
+    { "contentDetails": { "videoId": "v5" } },
+    { "contentDetails": { "videoId": "v6" } },
+    { "contentDetails": { "videoId": "vOutlier" } }
+  ]
+}

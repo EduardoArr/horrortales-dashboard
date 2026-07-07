@@ -1,0 +1,33 @@
+{
+  "angleCandidates": [
+    { "angle": "La policía cerró el caso sabiendo que la historia no cerraba", "whyItWorks": "Convierte la desaparición en una acusación al sistema, no solo un misterio", "recommended": true },
+    { "angle": "El último mensaje que envió no tiene sentido hasta el final", "whyItWorks": "Promete una pieza de evidencia concreta sin revelarla", "recommended": false },
+    { "angle": "Alguien cercano sabía la verdad y se llevó el secreto a la tumba", "whyItWorks": "Apunta a una traición íntima, más fuerte que un extraño culpable", "recommended": false },
+    { "angle": "Los mismos errores de investigación se repiten caso tras caso", "whyItWorks": "Conecta con un patrón sistémico, engancha a quien sigue el género", "recommended": false },
+    { "angle": "La familia encontró algo que la policía nunca buscó", "whyItWorks": "Posiciona a la audiencia del lado de la familia contra la autoridad", "recommended": false }
+  ],
+  "chosenAngle": "La policía cerró el caso sabiendo que la historia no cerraba",
+  "referenceAnalysis": null,
+  "titleCandidates": [
+    { "title": "Cerraron el caso sabiendo que mentían", "triggerNote": "Indignación ante una injusticia institucional", "ctrRank": 1, "isTopThree": true },
+    { "title": "La policía sabía la verdad y la enterró", "triggerNote": "Desconfianza hacia la autoridad", "ctrRank": 2, "isTopThree": true },
+    { "title": "El expediente que nadie quiso reabrir", "triggerNote": "Curiosidad por lo oculto/prohibido", "ctrRank": 3, "isTopThree": true },
+    { "title": "Un caso cerrado a propósito", "triggerNote": "Sospecha de encubrimiento", "ctrRank": 4, "isTopThree": false },
+    { "title": "La mentira oficial detrás de su desaparición", "triggerNote": "Indignación", "ctrRank": 5, "isTopThree": false },
+    { "title": "Sabían que algo no cerraba y lo archivaron", "triggerNote": "Injusticia", "ctrRank": 6, "isTopThree": false },
+    { "title": "El caso que la policía quiso olvidar", "triggerNote": "Curiosidad", "ctrRank": 7, "isTopThree": false },
+    { "title": "Cerrado sin explicación, hasta ahora", "triggerNote": "Promesa de revelación", "ctrRank": 8, "isTopThree": false },
+    { "title": "La verdad que quedó fuera del expediente", "triggerNote": "Curiosidad", "ctrRank": 9, "isTopThree": false },
+    { "title": "Nadie quiso investigar lo que encontraron", "triggerNote": "Sospecha", "ctrRank": 10, "isTopThree": false }
+  ],
+  "chosenTitle": "Cerraron el caso sabiendo que mentían",
+  "thumbnailConcept": {
+    "mainVisualElement": "Primer plano de un expediente sellado con un timbre rojo de 'CERRADO', mano sosteniéndolo",
+    "facialExpression": null,
+    "colorContrastNote": "Rojo intenso del sello contra un fondo azul oscuro casi negro",
+    "withheldInfo": "No se muestra qué contiene el expediente ni el nombre del caso",
+    "complementRuleNote": "El título acusa a la policía; la miniatura muestra la evidencia física del encubrimiento, no repite la acusación en texto",
+    "textOptions": ["CASO CERRADO", "LO SABÍAN", "NUNCA SE REABRIÓ", "ARCHIVADO A PROPÓSITO", "LA VERDAD OCULTA"]
+  },
+  "imagePrompt": "16:9 photorealistic composition, extreme close-up of a weathered case file folder stamped with a bold red 'CLOSED' stamp, a hand gripping the edge of the folder as if about to open it, dark navy blue blurred background suggesting a police archive room, dramatic single-source side lighting creating harsh shadows, high contrast between the red stamp and the cold blue background, tense and ominous mood, no readable text in the image except the stamp itself, cinematic true-crime documentary style"
+}

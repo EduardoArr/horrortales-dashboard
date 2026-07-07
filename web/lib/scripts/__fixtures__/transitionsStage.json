@@ -1,0 +1,84 @@
+{
+  "status": "ok",
+  "question": null,
+  "hooks": [
+    {
+      "afterSectionOrder": 1,
+      "options": [
+        "Pero la llamada no fue lo único raro esa noche.",
+        "Cuarenta segundos de silencio, y todavía faltaba lo peor.",
+        "Esa grabación era solo el principio.",
+        "Y mientras la central colgaba, el reloj seguía corriendo.",
+        "Nadie sabía todavía que la próxima demora iba a ser peor.",
+        "Lo que pasó después tardó cuarenta minutos en llegar."
+      ],
+      "chosenIndex": null,
+      "chosenText": null
+    },
+    {
+      "afterSectionOrder": 2,
+      "options": [
+        "Y cuando por fin llegaron, encontraron algo que nadie esperaba.",
+        "Cuarenta minutos tarde, para encontrarse con una casa vacía.",
+        "Pero la demora no fue el único error esa noche.",
+        "Lo que vieron al entrar cambió toda la investigación.",
+        "La puerta estaba abierta. Adentro, nada tenía sentido.",
+        "Y ahí fue cuando el caso se volvió imposible de explicar."
+      ],
+      "chosenIndex": null,
+      "chosenText": null
+    },
+    {
+      "afterSectionOrder": 3,
+      "options": [
+        "Porque esa no era la primera vez que llamaban a esa dirección.",
+        "Y resulta que la policía ya conocía esa casa.",
+        "Lo que nadie contó es que ya habían avisado antes.",
+        "Esta no era la primera señal de alarma.",
+        "Tres veces antes, alguien ya había pedido ayuda.",
+        "Y esta vez tampoco fue la primera advertencia ignorada."
+      ],
+      "chosenIndex": null,
+      "chosenText": null
+    },
+    {
+      "afterSectionOrder": 4,
+      "options": [
+        "Mientras tanto, a 200 kilómetros, algo apareció.",
+        "Y lejos de ahí, el auto ya estaba esperando ser encontrado.",
+        "La siguiente pista no estaba ni cerca de esa casa.",
+        "A 200km de distancia, apareció lo que nadie buscaba.",
+        "El auto iba a contar una historia distinta.",
+        "Y el primer indicio real estaba mucho más lejos de lo que pensaban."
+      ],
+      "chosenIndex": null,
+      "chosenText": null
+    },
+    {
+      "afterSectionOrder": 5,
+      "options": [
+        "Pero el auto no fue la única contradicción.",
+        "Y había algo más que no cerraba: un mensaje.",
+        "Antes de aparecer el auto, hubo un último mensaje de texto.",
+        "Lo que decía ese mensaje no coincidía con nada.",
+        "Y ese mensaje contradecía la versión oficial completa.",
+        "El teléfono todavía guardaba una última pista."
+      ],
+      "chosenIndex": null,
+      "chosenText": null
+    },
+    {
+      "afterSectionOrder": 6,
+      "options": [
+        "Y durante un año, nadie miró en el lugar correcto.",
+        "Pero la búsqueda oficial se equivocó de zona desde el día uno.",
+        "Un año después, alguien encontró lo que la policía nunca buscó.",
+        "La respuesta estuvo ahí todo el tiempo, fuera del mapa oficial.",
+        "Y el operativo nunca llegó a la zona que importaba.",
+        "Un vecino hizo lo que un año de búsqueda oficial no logró."
+      ],
+      "chosenIndex": null,
+      "chosenText": null
+    }
+  ]
+}

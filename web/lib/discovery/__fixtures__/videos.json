@@ -1,0 +1,116 @@
+{
+  "items": [
+    {
+      "id": "v1",
+      "snippet": {
+        "title": "Baseline video 1",
+        "description": "A real case, baseline video.",
+        "publishedAt": "2026-05-01T00:00:00Z",
+        "channelId": "UCsmallhorror1",
+        "thumbnails": {
+          "default": { "url": "https://i.ytimg.com/vi/v1/default.jpg" },
+          "medium": { "url": "https://i.ytimg.com/vi/v1/mqdefault.jpg" },
+          "high": { "url": "https://i.ytimg.com/vi/v1/hqdefault.jpg" }
+        }
+      },
+      "statistics": { "viewCount": "60000" },
+      "contentDetails": { "duration": "PT11M0S" }
+    },
+    {
+      "id": "v2",
+      "snippet": {
+        "title": "Baseline video 2",
+        "description": "A real case, baseline video.",
+        "publishedAt": "2026-05-06T00:00:00Z",
+        "channelId": "UCsmallhorror1",
+        "thumbnails": {
+          "default": { "url": "https://i.ytimg.com/vi/v2/default.jpg" },
+          "medium": { "url": "https://i.ytimg.com/vi/v2/mqdefault.jpg" },
+          "high": { "url": "https://i.ytimg.com/vi/v2/hqdefault.jpg" }
+        }
+      },
+      "statistics": { "viewCount": "58000" },
+      "contentDetails": { "duration": "PT10M40S" }
+    },
+    {
+      "id": "v3",
+      "snippet": {
+        "title": "Baseline video 3",
+        "description": "A real case, baseline video.",
+        "publishedAt": "2026-05-11T00:00:00Z",
+        "channelId": "UCsmallhorror1",
+        "thumbnails": {
+          "default": { "url": "https://i.ytimg.com/vi/v3/default.jpg" },
+          "medium": { "url": "https://i.ytimg.com/vi/v3/mqdefault.jpg" },
+          "high": { "url": "https://i.ytimg.com/vi/v3/hqdefault.jpg" }
+        }
+      },
+      "statistics": { "viewCount": "63000" },
+      "contentDetails": { "duration": "PT12M0S" }
+    },
+    {
+      "id": "v4",
+      "snippet": {
+        "title": "Baseline video 4",
+        "description": "A real case, baseline video.",
+        "publishedAt": "2026-05-16T00:00:00Z",
+        "channelId": "UCsmallhorror1",
+        "thumbnails": {
+          "default": { "url": "https://i.ytimg.com/vi/v4/default.jpg" },
+          "medium": { "url": "https://i.ytimg.com/vi/v4/mqdefault.jpg" },
+          "high": { "url": "https://i.ytimg.com/vi/v4/hqdefault.jpg" }
+        }
+      },
+      "statistics": { "viewCount": "59000" },
+      "contentDetails": { "duration": "PT11M20S" }
+    },
+    {
+      "id": "v5",
+      "snippet": {
+        "title": "Baseline video 5",
+        "description": "A real case, baseline video.",
+        "publishedAt": "2026-05-21T00:00:00Z",
+        "channelId": "UCsmallhorror1",
+        "thumbnails": {
+          "default": { "url": "https://i.ytimg.com/vi/v5/default.jpg" },
+          "medium": { "url": "https://i.ytimg.com/vi/v5/mqdefault.jpg" },
+          "high": { "url": "https://i.ytimg.com/vi/v5/hqdefault.jpg" }
+        }
+      },
+      "statistics": { "viewCount": "61000" },
+      "contentDetails": { "duration": "PT10M50S" }
+    },
+    {
+      "id": "v6",
+      "snippet": {
+        "title": "Baseline video 6",
+        "description": "A real case, baseline video.",
+        "publishedAt": "2026-05-26T00:00:00Z",
+        "channelId": "UCsmallhorror1",
+        "thumbnails": {
+          "default": { "url": "https://i.ytimg.com/vi/v6/default.jpg" },
+          "medium": { "url": "https://i.ytimg.com/vi/v6/mqdefault.jpg" },
+          "high": { "url": "https://i.ytimg.com/vi/v6/hqdefault.jpg" }
+        }
+      },
+      "statistics": { "viewCount": "60500" },
+      "contentDetails": { "duration": "PT11M10S" }
+    },
+    {
+      "id": "vOutlier",
+      "snippet": {
+        "title": "The outlier video",
+        "description": "A real case that went viral, the outlier.",
+        "publishedAt": "2026-06-28T00:00:00Z",
+        "channelId": "UCsmallhorror1",
+        "thumbnails": {
+          "default": { "url": "https://i.ytimg.com/vi/vOutlier/default.jpg" },
+          "medium": { "url": "https://i.ytimg.com/vi/vOutlier/mqdefault.jpg" },
+          "high": { "url": "https://i.ytimg.com/vi/vOutlier/hqdefault.jpg" }
+        }
+      },
+      "statistics": { "viewCount": "500000" },
+      "contentDetails": { "duration": "PT13M0S" }
+    }
+  ]
+}

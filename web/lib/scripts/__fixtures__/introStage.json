@@ -1,0 +1,24 @@
+{
+  "status": "ok",
+  "question": null,
+  "variations": [
+    {
+      "angle": "miedo",
+      "text": "A las 3:14 de la madrugada, alguien marcó el 911 y colgó sin decir una palabra. El operador tardó cuarenta minutos en enviar un patrullero. Cuando llegaron, la casa estaba vacía y el teléfono todavía tenía la línea abierta.",
+      "wordCount": 42,
+      "qaWarnings": []
+    },
+    {
+      "angle": "ironia",
+      "text": "El sistema de emergencias que se supone te salva la vida fue, en este caso, el motivo por el que nadie llegó a tiempo. Cuarenta minutos de demora, tres llamadas previas ignoradas, y un final que todavía no tiene explicación oficial.",
+      "wordCount": 40,
+      "qaWarnings": []
+    },
+    {
+      "angle": "dato_sorprendente",
+      "text": "El protocolo del condado exige despachar una llamada de emergencia en menos de cinco minutos. Esta tardó cuarenta. Y ese no fue ni siquiera el primer aviso sobre esa casa.",
+      "wordCount": 30,
+      "qaWarnings": []
+    }
+  ]
+}

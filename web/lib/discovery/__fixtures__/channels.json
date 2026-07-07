@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "id": "UCsmallhorror1",
+      "snippet": {
+        "title": "Small Horror Channel",
+        "customUrl": "@smallhorrorchannel",
+        "country": "US",
+        "publishedAt": "2025-01-15T00:00:00Z",
+        "thumbnails": { "default": { "url": "https://example.com/small.jpg" } }
+      },
+      "statistics": { "subscriberCount": "5000" },
+      "contentDetails": { "relatedPlaylists": { "uploads": "UUsmallhorror1" } }
+    },
+    {
+      "id": "UCbigchannel1",
+      "snippet": {
+        "title": "Big Established Channel",
+        "customUrl": "@bigchannel",
+        "country": "ES",
+        "publishedAt": "2010-05-20T00:00:00Z",
+        "thumbnails": { "default": { "url": "https://example.com/big.jpg" } }
+      },
+      "statistics": { "subscriberCount": "5000000" },
+      "contentDetails": { "relatedPlaylists": { "uploads": "UUbigchannel1" } }
+    }
+  ]
+}

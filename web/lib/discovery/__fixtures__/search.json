@@ -1,0 +1,6 @@
+{
+  "items": [
+    { "id": { "videoId": "vid_small_1" }, "snippet": { "channelId": "UCsmallhorror1" } },
+    { "id": { "videoId": "vid_big_1" }, "snippet": { "channelId": "UCbigchannel1" } }
+  ]
+}

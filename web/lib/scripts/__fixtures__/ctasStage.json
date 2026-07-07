@@ -1,0 +1,21 @@
+{
+  "status": "ok",
+  "question": null,
+  "ctas": [
+    {
+      "position": "post_first_section",
+      "afterSectionOrder": 1,
+      "text": "Si estás viendo esto a la madrugada como nosotros cuando lo investigamos, suscribite — subimos un caso nuevo cada semana."
+    },
+    {
+      "position": "mid_script",
+      "afterSectionOrder": 4,
+      "text": "Antes de seguir: dejanos en los comentarios en qué momento se te heló la sangre. Leemos todos."
+    },
+    {
+      "position": "end_screen",
+      "afterSectionOrder": null,
+      "text": "Si este caso te dejó pensando, el que sigue en pantalla te va a dejar peor. Dale play."
+    }
+  ]
+}

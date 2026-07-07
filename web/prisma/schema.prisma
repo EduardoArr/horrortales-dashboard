@@ -1,0 +1,320 @@
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  createdAt    DateTime @default(now())
+
+  outlierStatusChanges  Outlier[]       @relation("StatusUpdatedBy")
+  discoveryRuns         DiscoveryRun[]
+  keywordSearches       KeywordSearch[]
+  hostPhotosUploaded    HostPhoto[]     @relation("HostPhotoUploadedBy")
+  thumbnailIdeasCreated ThumbnailIdea[] @relation("ThumbnailIdeaCreatedBy")
+  scriptsCreated        Script[]        @relation("ScriptCreatedBy")
+}
+
+enum ChannelSource {
+  SEARCH_DISCOVERY
+  MANUAL_SEED
+  MANUAL_ADDED
+}
+
+enum ChannelStatus {
+  CANDIDATE
+  REJECTED
+  BLOCKED
+}
+
+model Channel {
+  id                 String        @id @default(cuid())
+  youtubeChannelId   String        @unique
+  title              String
+  handle             String?
+  country            String?
+  isCountryVerified  Boolean       @default(false)
+  subscriberCount    Int
+  channelPublishedAt DateTime
+  uploadsPlaylistId  String
+  thumbnailUrl       String?
+  source             ChannelSource
+  status             ChannelStatus @default(CANDIDATE)
+  rejectionReason    String?
+  discoveredAt       DateTime      @default(now())
+  lastCheckedAt      DateTime?
+
+  discoveredViaKeywordId String?
+  discoveredViaKeyword   KeywordSearch? @relation(fields: [discoveredViaKeywordId], references: [id])
+
+  outliers Outlier[]
+
+  @@index([status, lastCheckedAt])
+}
+
+enum OutlierStatus {
+  NEW
+  SAVED
+  DISCARDED
+  USED
+}
+
+model Outlier {
+  id                       String        @id @default(cuid())
+  youtubeVideoId           String        @unique
+  channelId                String
+  channel                  Channel       @relation(fields: [channelId], references: [id])
+  title                    String
+  description              String?
+  url                      String
+  thumbnailUrl             String?
+  views                    Int
+  publishedAt              DateTime
+  durationSeconds          Int
+  vpd                      Float
+  channelBaselineVpd       Float
+  score                    Float
+  viewsVsSubs              Float
+  subscriberCountAtCapture Int
+  status                   OutlierStatus @default(NEW)
+  notes                    String?
+  statusUpdatedAt          DateTime?
+  statusUpdatedById        String?
+  statusUpdatedBy          User?         @relation("StatusUpdatedBy", fields: [statusUpdatedById], references: [id])
+  firstSeenAt              DateTime      @default(now())
+  lastRefreshedAt          DateTime      @default(now())
+
+  thumbnailIdeas    ThumbnailIdea[]
+  referencedInIdeas ThumbnailIdea[] @relation("ThumbnailIdeaReferences")
+
+  @@index([status, score])
+}
+
+enum TriggerSource {
+  CRON
+  MANUAL
+}
+
+model KeywordSearch {
+  id                String        @id @default(cuid())
+  keyword           String
+  regionCode        String        @default("US")
+  relevanceLanguage String        @default("en")
+  executedAt        DateTime      @default(now())
+  resultCount       Int
+  quotaCost         Int
+  triggeredBy       TriggerSource
+  triggeredById     String?
+  triggeredByUser   User?         @relation(fields: [triggeredById], references: [id])
+  runId             String?
+  discoveryRun      DiscoveryRun? @relation(fields: [runId], references: [id])
+  channelsFound     Channel[]
+
+  @@index([keyword, executedAt])
+}
+
+enum DiscoveryRunStatus {
+  RUNNING
+  COMPLETED
+  FAILED
+  ABORTED_QUOTA
+}
+
+model DiscoveryRun {
+  id                 String             @id @default(cuid())
+  startedAt          DateTime           @default(now())
+  finishedAt         DateTime?
+  trigger            TriggerSource
+  triggeredById      String?
+  triggeredByUser    User?              @relation(fields: [triggeredById], references: [id])
+  keywordsRun        Int                @default(0)
+  channelsDiscovered Int                @default(0)
+  channelsCandidates Int                @default(0)
+  outliersFound      Int                @default(0)
+  quotaUnitsUsed     Int                @default(0)
+  status             DiscoveryRunStatus @default(RUNNING)
+  errorMessage       String?
+  keywordSearches    KeywordSearch[]
+}
+
+model QuotaUsage {
+  id        String   @id @default(cuid())
+  date      DateTime @unique
+  unitsUsed Int      @default(0)
+  updatedAt DateTime @updatedAt
+}
+
+enum ThumbnailIdeaStatus {
+  DRAFT
+  FINAL
+}
+
+enum HostFeaturePreference {
+  NONE
+  HOST_1
+  HOST_2
+  BOTH
+}
+
+model HostPhoto {
+  id               String   @id @default(cuid())
+  hostLabel        String
+  blobUrl          String
+  blobPathname     String
+  originalFilename String?
+  contentType      String
+  sizeBytes        Int
+  notes            String?
+  uploadedAt       DateTime @default(now())
+  uploadedById     String?
+  uploadedBy       User?    @relation("HostPhotoUploadedBy", fields: [uploadedById], references: [id])
+
+  @@index([hostLabel])
+}
+
+model ThumbnailIdea {
+  id                   String                @id @default(cuid())
+  sourceOutlierId      String?
+  sourceOutlier        Outlier?              @relation(fields: [sourceOutlierId], references: [id])
+  freeformIdea         String?
+  referenceOutliers    Outlier[]             @relation("ThumbnailIdeaReferences")
+  requestedHostFeature HostFeaturePreference @default(NONE)
+
+  // Structured output from the Anthropic API — see lib/thumbnails/types.ts
+  angleCandidates   Json
+  chosenAngle       String
+  referenceAnalysis Json?
+  titleCandidates   Json
+  chosenTitle       String
+  thumbnailConcept  Json
+  imagePrompt       String
+
+  status      ThumbnailIdeaStatus @default(DRAFT)
+  notes       String?
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+  createdById String?
+  createdBy   User?               @relation("ThumbnailIdeaCreatedBy", fields: [createdById], references: [id])
+
+  scripts Script[]
+
+  @@index([status, createdAt])
+  @@index([sourceOutlierId])
+}
+
+enum ScriptTitleMode {
+  VALIDATE
+  GENERATE
+}
+
+enum ScriptPhase {
+  TITLE
+  INTRO
+  OUTLINE
+  PAYOFFS
+  SECTIONS
+  TRANSITIONS
+  CTAS
+  STYLE_REVIEW
+  COMPLETE
+}
+
+model Script {
+  id String @id @default(cuid())
+
+  sourceThumbnailIdeaId String?
+  sourceThumbnailIdea   ThumbnailIdea? @relation(fields: [sourceThumbnailIdeaId], references: [id])
+
+  // Fase 0 — insumos
+  title                String?
+  thumbnailDescription String
+  research             String
+  referenceScript      String?
+  brainDump            String?
+
+  // Etapa 1 — título
+  titleMode       ScriptTitleMode
+  titleAssessment Json?
+  titleCandidates Json?
+  chosenTitle     String?
+
+  // Etapa 2 — intro
+  introVariations  Json?
+  chosenIntroAngle String?
+  chosenIntro      String?
+
+  // Etapa 3 — outline
+  outlineSections Json?
+
+  // Etapa 4 — payoffs (uno por sección del outline)
+  payoffs Json?
+
+  // Etapa 5 — secciones completas: ver modelo ScriptSection (una fila por
+  // sección, generada/reintentada de forma independiente — no encaja en el
+  // patrón de columna Json de las demás etapas).
+
+  // Etapa 6 — hooks de transición (uno por unión entre secciones)
+  transitionHooks Json?
+
+  // Etapa 7 — CTAs (siempre 3: post primera sección, mitad del guion, cierre)
+  ctas Json?
+
+  // Etapa 8 — feedback loop
+  editedFinalScript String?
+  styleGuideReport  Json?
+
+  currentPhase         ScriptPhase @default(TITLE)
+  pendingClarification Json?
+
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  createdById String?
+  createdBy   User?    @relation("ScriptCreatedBy", fields: [createdById], references: [id])
+
+  clarifications ScriptClarification[]
+  sections       ScriptSection[]
+
+  @@index([currentPhase, createdAt])
+  @@index([sourceThumbnailIdeaId])
+}
+
+model ScriptSection {
+  id       String @id @default(cuid())
+  scriptId String
+  script   Script @relation(fields: [scriptId], references: [id])
+
+  order Int
+
+  // 1-2 candidatos {text, wordCount} — 2 solo si el usuario pidió variaciones.
+  variations Json?
+  chosenText String?
+
+  // Aclaración pendiente propia de ESTA sección (no la global de Script) —
+  // permite reintentar una sección sin bloquear las demás.
+  pendingClarification Json?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([scriptId, order])
+  @@index([scriptId, order])
+}
+
+model ScriptClarification {
+  id        String      @id @default(cuid())
+  scriptId  String
+  script    Script      @relation(fields: [scriptId], references: [id])
+  phase     ScriptPhase
+  question  String
+  answer    String
+  createdAt DateTime    @default(now())
+
+  @@index([scriptId, phase])
+}

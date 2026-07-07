@@ -1,0 +1,38 @@
+{
+  "status": "ok",
+  "question": null,
+  "mode": "generate",
+  "assessment": null,
+  "candidates": [
+    {
+      "title": "La llamada que nadie contestó a tiempo",
+      "angle": "El operador de emergencias tardó 40 minutos en despachar la llamada",
+      "hook": "indignacion",
+      "reasoning": "Activa indignación porque la demora institucional, no el crimen en sí, es lo que se pudo evitar."
+    },
+    {
+      "title": "Encontraron su auto, pero no a ella",
+      "angle": "El vehículo apareció intacto a 200km, sin rastro de forcejeo",
+      "hook": "fascinacion",
+      "reasoning": "La ausencia de violencia visible genera curiosidad sobre qué pasó realmente."
+    },
+    {
+      "title": "El vecino que llamó a la policía tres veces",
+      "angle": "Hubo tres denuncias previas ignoradas por el mismo motivo",
+      "hook": "indignacion",
+      "reasoning": "El patrón de advertencias desestimadas genera bronca hacia el sistema."
+    },
+    {
+      "title": "Lo último que escribió antes de desaparecer",
+      "angle": "El último mensaje contradice la versión oficial de los hechos",
+      "hook": "perturbacion",
+      "reasoning": "La contradicción entre el mensaje y la versión oficial perturba porque sugiere un encubrimiento."
+    },
+    {
+      "title": "Nadie buscó en el lugar correcto durante un año",
+      "angle": "La zona de búsqueda oficial nunca incluyó el sitio real",
+      "hook": "fascinacion",
+      "reasoning": "Genera curiosidad sobre por qué se descartó esa zona desde el principio."
+    }
+  ]
+}
