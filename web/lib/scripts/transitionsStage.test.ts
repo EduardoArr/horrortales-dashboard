@@ -58,4 +58,20 @@ describe("buildMessages", () => {
     const text = messages[0].content as string;
     expect(text).toContain("La llamada que nadie contestó a tiempo");
   });
+
+  it("spells out the exact expected hook count and afterSectionOrder values instead of relying on the model to compute N-1", () => {
+    const messages = buildMessages(
+      baseInput({
+        sections: [
+          { order: 1, workingTitle: "Uno", text: "..." },
+          { order: 2, workingTitle: "Dos", text: "..." },
+          { order: 3, workingTitle: "Tres", text: "..." },
+          { order: 4, workingTitle: "Cuatro", text: "..." },
+        ],
+      })
+    );
+    const text = messages[0].content as string;
+    expect(text).toContain("EXACTAMENTE 3 sets de hooks");
+    expect(text).toContain("1, 2, 3");
+  });
 });

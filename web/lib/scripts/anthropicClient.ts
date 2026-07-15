@@ -221,9 +221,18 @@ export async function generateTransitionsStage(
     return parseTransitionsStageOutput(loadFixture(fixture), expectedJunctions);
   }
 
+  // This stage writes 6 hook options per junction (N-1 of them), which is
+  // measurably more output than the other stages: a real run with 10
+  // sections used 3354 of the shared 4096-token default (82%) — with the
+  // longer section text real scripts have, that's an easy truncation, which
+  // shows up as a wrong `hooks.length` even though the model tried to
+  // deliver the right count. Give this call its own larger budget instead of
+  // sharing the global default.
+  const TRANSITIONS_MAX_TOKENS = Math.max(ANTHROPIC_MAX_TOKENS, 12000);
+
   const response = await getAnthropicClient().messages.create({
     model: ANTHROPIC_MODEL,
-    max_tokens: ANTHROPIC_MAX_TOKENS,
+    max_tokens: TRANSITIONS_MAX_TOKENS,
     system: buildTransitionsSystemPrompt(),
     tools: [buildTransitionsStageTool()],
     tool_choice: buildTransitionsToolChoice(),

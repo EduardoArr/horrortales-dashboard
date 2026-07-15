@@ -60,17 +60,28 @@ N-1 uniones — "afterSectionOrder" es el número de la sección que termina en 
 
 export function buildMessages(input: TransitionsStageInput): Anthropic.MessageParam[] {
   const parts: string[] = [];
+  const orderedSections = input.sections.slice().sort((a, b) => a.order - b.order);
 
   parts.push(`TÍTULO ELEGIDO: ${input.chosenTitle}`);
   parts.push("");
   parts.push("SECCIONES DEL GUION, EN ORDEN:");
-  input.sections
-    .slice()
-    .sort((a, b) => a.order - b.order)
-    .forEach((s) => {
-      parts.push(`--- Sección ${s.order}: ${s.workingTitle} ---`);
-      parts.push(s.text);
-    });
+  orderedSections.forEach((s) => {
+    parts.push(`--- Sección ${s.order}: ${s.workingTitle} ---`);
+    parts.push(s.text);
+  });
+
+  // Spelling out the exact count and the literal list of afterSectionOrder
+  // values removes the need for the model to compute "N-1" itself by
+  // counting sections — that arithmetic step was the likely source of the
+  // wrong hooks.length errors (the strict tool schema can't enforce array
+  // length, see buildTransitionsStageTool above).
+  const junctionOrders = orderedSections.slice(0, -1).map((s) => s.order);
+  parts.push("");
+  parts.push(
+    `Hay ${orderedSections.length} secciones en total, así que tenés que devolver EXACTAMENTE ` +
+      `${junctionOrders.length} sets de hooks (ni uno más, ni uno menos): uno por cada uno de ` +
+      `estos valores de "afterSectionOrder", sin omitir ninguno: ${junctionOrders.join(", ")}.`
+  );
 
   const clarificationsBlock = buildClarificationsBlock(input.clarifications);
   if (clarificationsBlock) {
