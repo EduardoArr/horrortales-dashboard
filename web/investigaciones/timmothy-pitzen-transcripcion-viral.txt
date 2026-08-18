@@ -1,0 +1,136 @@
+# Transcripción viral de referencia — caso Timmothy Pitzen
+
+Nota: transcripción de un canal en inglés (Detective Perspective / Derek Levasser, estilo
+Crime Weekly). Se usa SOLO como (1) termómetro de estructura y ritmo y (2) superficie de
+cruce factual. Ningún dato de aquí entra al guion si no está también en la investigación
+(regla de reconciliación, GUION.md 2.2). El mensaje original llegó truncado a los ~50k
+caracteres; esto es lo recibido.
+
+---
+
+[COLD OPEN]
+On the morning of May 13th, 2011, 6-year-old Timothy Pitzen was seen checking out of the
+Kalahari Resort in Wisconsin Dells with his mother, Amy, but he was never seen with her again.
+The next day, Amy was found dead in a motel in Rockford, Illinois. She had left behind notes
+stating that Tim was safe and would be cared for, but that no one would ever find him. 14 years
+later, Tim's whereabouts remain unknown, and his family is still searching, hoping to bring him home.
+
+[Presentación del canal / CrimeCon / patrocinio — omitido por no ser factual del caso]
+
+[HECHOS DEL CASO según el narrador]
+- Timothy James Pitzen, nacido el 18 de octubre de 2004, padres Jim y Amy. Nombre escrito con
+  dos M porque querían que destacara y por el hermano de Amy, Timothy, muerto joven.
+- Creció en Aurora, Illinois (afueras de Chicago). Le gustaba el zoo, la bici, el go-kart y los
+  coches Matchbox. Jim (a Crime Watch Daily): "se lleva bien con todo el mundo... todos son sus
+  amigos, aunque no los conozca".
+- Agosto de 2013 [sic en el narrador]: empezó kindergarten en Greenman Elementary. En mayo de
+  2011 tenía 6 años.
+- Noche del 11 de mayo: Jim llama a la policía de Aurora. Esa mañana, antes de las 8:00, él y
+  Amy dejaron a Tim en el colegio. Jim llevó a Amy al trabajo (rutina inusual; el coche de Amy
+  estaba en su trabajo porque se había ido a casa enferma el día anterior).
+- 10:30 a. m.: Jim va a recoger a Tim (día corto) y descubre que Amy lo había sacado a las 8:15
+  alegando "family emergency". Jim no sabía nada de esa emergencia. Llama a Amy varias veces:
+  buzón de voz. Por la noche llama a la policía; le dicen que espere 24 horas.
+- El narrador critica la espera de 24 horas ("el tiempo es esencial con un niño").
+- 12 de mayo, media mañana: Jim se reúne con agentes en persona. Explica que Amy tenía historial
+  de "shutting him out" cuando se enfadaba; discutían por un crucero reciente a las Bahamas que
+  Amy hizo con una amiga sin Jim ni Tim. Amy se había ido antes al enfadarse, pero nunca con Tim.
+  Jim llama a la hermana de Amy: no sabe nada. Denuncia formal de desaparición.
+- Amy no responde hasta la tarde del 13 de mayo (más de 2 días). Entre 12:00 y 13:00 llama a su
+  madre: todo bien, necesitaba estar sola. Luego llama a Chuck (hermano de Jim), que oye a Tim de
+  fondo y habla brevemente con él; Tim sonaba bien. Chuck insta a Amy a llamar a Jim; Amy: "Tim is
+  my son and I can do what I want". Chuck avisa a Jim; Jim llama sin parar, sin respuesta. Nadie
+  vuelve a saber de Amy ni de Tim.
+- Al día siguiente la policía comunica a Jim que Amy fue hallada muerta en un motel de Rockford
+  (a ~1h15 de Aurora). Tim no estaba con ella.
+- Amy hizo check-in la noche anterior entre 11:15 y 11:30 p. m., sola. Al mediodía siguiente una
+  camarera encontró el cuerpo.
+- [Aviso de suicidio] Cúter (box cutter) bajo la cama; Amy se cortó muñeca y cuello; posiblemente
+  pastillas antes. La sangre del cúter era solo de Amy, de nadie más. Junto al cúter: la tarjeta
+  de identificación infantil de Tim y una nota de suicidio.
+- Carta nunca publicada completa. Partes conocidas: Amy se disculpa con el personal del motel por
+  el "mess". Envió cartas a su madre y a la amiga del viaje a Bahamas. Escribió que nunca sintió
+  que perteneciera al mundo: "I felt for a long time that I belonged with Timothy, but in the end,
+  that wasn't even enough, and I need to go." Insistió en que Tim estaba bien; a su madre: "I've
+  taken him somewhere safe. He will be cared for, and he says that he loves you. Please know that
+  there is nothing you could have said or done that could have changed my mind."
+- Amy tenía depresión severa años antes de nacer Tim; dos intentos de suicidio previos. Tras el
+  segundo, medicación para ansiedad y depresión, y descubrió el embarazo de Tim (lo vivió como
+  señal de vivir). Hermana (a Chicago magazine): tener a Tim "le dio sentido a su vida"; la
+  depresión mejoró mucho. Jim: "just adored that little boy and he just adored her... apple of
+  her eye... inseparables".
+- Al crecer Tim y hacerse más independiente, la depresión de Amy pareció volver; matrimonio más
+  tenso, discusiones más frecuentes. En las semanas previas dejó la medicación. Jim (a Chicago
+  magazine): "She'd act real funny, big highs and lows. She would become really emotional." Jim
+  también supo que hablaba con un ex-marido (Amy se casó varias veces, cree que cuatro) y encontró
+  correspondencia sobre planes de verse cuando Jim no estuviera.
+- Móvil de Amy no estaba en el motel. Recuperado años después, tirado junto a una autopista;
+  nada útil (el narrador especula si fue borrado/dañado).
+- Charley Project: la mochila Spider-Man de Tim, sus juguetes y ropa también faltaban del motel;
+  nunca hallados. Dio esperanza de que Tim siguiera vivo.
+- Ford Expedition aparcada fuera del motel, sucia con plantas y malas hierbas debajo. La silla de
+  coche de Tim no estaba dentro; al principio pensaron que Amy se la dio a quien dejó a Tim, pero
+  luego supieron que la abuela de Tim tenía la silla desde una semana antes.
+- En el asiento trasero, cantidad "preocupante" de sangre. Según NBC, la familia dijo que
+  probablemente era de una hemorragia nasal severa que Tim tuvo en el coche poco antes. Confirmada
+  como sangre de Tim, seca, sin poder datar.
+- La familia insistió en que Amy nunca dañaría a su hijo; el narrador respeta esa opinión pero no
+  puede descartar objetivamente el homicidio.
+- Aurora Police sumó al FBI, US Marshals y otras agencias. Reconstrucción de la cronología:
+  * 11 de mayo ~8:30 recoge a Tim; ~10:00 taller para revisar el SUV antes del viaje largo; un
+    mecánico los deja en Brookfield Zoo (lugar favorito de Tim); vuelven a las 3:00 p. m. por el
+    SUV; conducen al norte a Key Lime Cove Water Resort.
+  * 12 de mayo: ~2h30 hasta Kalahari Resort en Wisconsin Dells. Paradas de gasolina y bebidas;
+    tienda donde Amy compró ropa nueva, un coche de juguete y un kit de manualidades (craft kit).
+  * 13 de mayo 10:00 a. m.: cámaras muestran a Amy y Tim saliendo del resort; Amy le da la mano y
+    revisa la mochila Spider-Man. Jim revisó ese vídeo: Tim "happy and didn't seem to have any
+    distress". Último avistamiento confirmado de Tim.
+  * Amy conduce ~170 millas al suroeste; hacia mediodía llama a su madre y a Chuck. Última vez que
+    Tim habló con la familia. Daily Chronicle: llamada rastreada a un área a 5 millas al noroeste
+    de Sterling, Illinois (pueblo pequeño rodeado de campo, cerca de Route 40). Los registros
+    sugieren llamadas hechas desde dentro de la Expedition, tras parar en el arcén. Al colgar con
+    Chuck, Amy apagó el teléfono y condujo a Sterling. La familia no sabe por qué fue allí.
+- I-Pass (toll pass) de Amy: había hecho dos viajes secretos a Sterling en los meses previos. Los
+  investigadores consideraron que pudo estar explorando el área para entregar a Tim a alguien de
+  confianza, o (peor escenario) buscando un sitio para dejarlo tras matarlo. Dos de las pocas
+  pistas sólidas que quedan.
+- Movimientos del resto del 13 de mayo poco claros. 8:00 p. m.: cámara en un Family Dollar en
+  Winnebago, cerca de Rockford, sola; compra papelería y sobres (para las cartas). Para en un
+  Sullivan's Foods cercano; luego al motel de Rockford, check-in 11:15-11:30 p. m. Cuerpo hallado
+  13 horas después.
+- Faltaban de la habitación: el I-Pass de Amy y la ropa que llevaba al salir del Kalahari. Nunca
+  hallados.
+- Búsquedas en carreteras y parques remotos por los corredores I-88 e I-39; nada. Demasiado
+  terreno cubierto.
+- Análisis de tierra y plantas bajo la Expedition (WQAD): el SUV paró en un arcén de grava/apeadero
+  junto a carretera asfaltada y retrocedió hacia una pradera abierta. Entorno: noroeste de Illinois,
+  condados de Lee y Whiteside los más probables (Sterling está en Whiteside). El narrador detalla:
+  microesferas de vidrio de la línea reflectante del asfalto; probables abedules (birch) y robles
+  (oak) cerca; restos de Queen Anne's Lace y black mustard; probable agua cerca (arroyo o estanque).
+  Aun así, no reduce mucho el área de búsqueda.
+- La familia siguió creyendo que Tim estaba vivo, entregado a alguien entre la llamada y el check-in.
+- 2019: chico de 14 años [sic] en Kentucky dice ser Tim, huido de secuestradores tras 7 años. ADN:
+  en realidad 23 años, hombre de Ohio con varios diagnósticos de salud mental. Enero de 2020: se
+  declara culpable de aggravated identity theft; 2 años de prisión con tiempo cumplido y un año de
+  libertad condicional. [El narrador no lo nombra aquí; la investigación lo identifica como Brian
+  Michael Rini.]
+- 2021: 10 años, sin avistamientos confirmados; sin prueba de vivo ni de muerto; se sigue asumiendo
+  que está por ahí. Jim (a Chicago magazine): sigue convencido de que aparecerá; tiene una teoría
+  que compartió con la policía pero no hace pública para no alertar a implicados. Idea general: alguien
+  criando a Tim "off-grid" en un lugar remoto sin acceso a noticias; o Tim llevado a otro país.
+- Mayo de 2024: 13 años después, NCMEC publica progresión de edad a los 19 años. Mensaje de Jim:
+  "Dear Tim, the years apart have been hard. I am so looking forward to us being reunited... Till I
+  see you again. Love, Dad."
+- Sin más actualizaciones mayores; sigue desaparecido.
+
+[PERSPECTIVA DEL NARRADOR — opinión, no hechos]
+- Asunción general: Amy había decidido quitarse la vida y no quería que Tim quedara con Jim.
+- Premeditación: dejó el coche en el trabajo fingiéndose enferma; dos viajes de reconocimiento a
+  Sterling; posible borrado de datos (teléfono tirado, quizá limpiado antes; cuenta de correo Yahoo
+  secreta que la familia no conocía, con la bandeja borrada y solo spam — Yahoo dijo no poder
+  recuperar borrados); apagó el móvil al entrar en Sterling.
+- Dos teorías compatibles con la evidencia: (1) homicidio y ocultación del cuerpo en la pradera con
+  agua cerca, y nota engañosa para que la recuerden como madre que no dañó a su hijo; (2) entrega a
+  una familia/amigo dispuesto a criar a Tim, quizá convenciéndolos de que Jim era un peligro — lo que
+  explicaría el borrado de rastros. Las compras (ropa, juguetes, craft kit) apuntarían más a la
+  entrega. "Can't rationalize the irrational."
